@@ -9,5 +9,5 @@ import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
  */
 
 public interface IRecipeNetworkFetcher {
-    void getRecipes(SuccessCallback<Recipe> successCallback, ErrorCallback errorCallback);
+    void fetchRecipes(SuccessCallback<Recipe> successCallback, ErrorCallback errorCallback);
 }

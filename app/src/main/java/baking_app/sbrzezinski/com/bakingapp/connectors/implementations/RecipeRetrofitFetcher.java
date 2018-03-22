@@ -13,7 +13,7 @@ import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
 
 public class RecipeRetrofitFetcher implements IRecipeNetworkFetcher {
     @Override
-    public void getRecipes(SuccessCallback<Recipe> successCallback, ErrorCallback errorCallback) {
-        Log.d("abc","executed!!!!!!!!!!!");
+    public void fetchRecipes(SuccessCallback<Recipe> successCallback, ErrorCallback errorCallback) {
+        Log.d("hello world!!","aaaa");
     }
 }

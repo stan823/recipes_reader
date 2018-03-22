@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import baking_app.sbrzezinski.com.bakingapp.MainActivity;
 import baking_app.sbrzezinski.com.bakingapp.modules.ConnectorsModule;
 import baking_app.sbrzezinski.com.bakingapp.modules.VMModule;
+import baking_app.sbrzezinski.com.bakingapp.repositories.interfaces.IMainActivityRepository;
 import baking_app.sbrzezinski.com.bakingapp.view_models.MainActivityViewModel;
 import dagger.Component;
 
@@ -14,5 +15,5 @@ import dagger.Component;
 @Singleton
 @Component(modules = {ConnectorsModule.class})
 public interface ConnectorsComponent {
-    void inject(MainActivityViewModel viewModel);
+    void inject(IMainActivityRepository repository);
 }

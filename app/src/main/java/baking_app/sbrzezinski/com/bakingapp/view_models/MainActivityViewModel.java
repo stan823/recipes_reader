@@ -3,7 +3,7 @@ package baking_app.sbrzezinski.com.bakingapp.view_models;
 import javax.inject.Inject;
 
 import baking_app.sbrzezinski.com.bakingapp.BakingApplication;
-import baking_app.sbrzezinski.com.bakingapp.connectors.interfaces.IRecipeNetworkFetcher;
+import baking_app.sbrzezinski.com.bakingapp.repositories.interfaces.IMainActivityRepository;
 
 /**
  * Created by Stanislaw Brzezinski  on 22/03/2018 12:25.
@@ -11,14 +11,14 @@ import baking_app.sbrzezinski.com.bakingapp.connectors.interfaces.IRecipeNetwork
 
 public class MainActivityViewModel {
     @Inject
-    IRecipeNetworkFetcher recipeNetworkFetcher;
+    IMainActivityRepository mainActivityRepository;
 
     public MainActivityViewModel() {
-        BakingApplication.getBakingApplication().getConnectorsComponent().inject(this);
+        BakingApplication.getBakingApplication().getRepositoriesComponent().inject(this);
     }
 
-    public void execute(){
-        recipeNetworkFetcher.getRecipes(null,null);
+    public void execute() {
+        mainActivityRepository.fetchRecipe(null,null);
     }
 
 
