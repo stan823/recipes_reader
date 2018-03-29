@@ -1,10 +1,11 @@
-package baking_app.sbrzezinski.com.bakingapp.modules;
+package baking_app.sbrzezinski.com.bakingapp.dagger.modules;
 
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;
 
 import baking_app.sbrzezinski.com.bakingapp.retrofit.RetrofitService;
+import baking_app.sbrzezinski.com.bakingapp.statics.WebUrls;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -15,11 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class NetworkModule {
-    private String baseUrlPagth;
-
-    public NetworkModule(String baseUrlPagth) {
-        this.baseUrlPagth = baseUrlPagth;
-    }
 
     @Singleton
     @Provides
@@ -31,7 +27,7 @@ public class NetworkModule {
     @Provides
     public Retrofit provideRetrofit(Gson gson){
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(baseUrlPagth)
+                .baseUrl(WebUrls.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;

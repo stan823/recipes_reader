@@ -1,5 +1,7 @@
 package baking_app.sbrzezinski.com.bakingapp.connectors.interfaces;
 
+import java.util.List;
+
 import baking_app.sbrzezinski.com.bakingapp.commmon_interfaces.ErrorCallback;
 import baking_app.sbrzezinski.com.bakingapp.commmon_interfaces.SuccessCallback;
 import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
@@ -9,5 +11,5 @@ import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
  */
 
 public interface IRecipeNetworkFetcher {
-    void fetchRecipes(SuccessCallback<Recipe> successCallback, ErrorCallback errorCallback);
+    void fetchRecipes(SuccessCallback<List<Recipe>> successCallback, ErrorCallback errorCallback);
 }

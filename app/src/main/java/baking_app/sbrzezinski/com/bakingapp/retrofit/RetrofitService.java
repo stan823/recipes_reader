@@ -1,6 +1,9 @@
 package baking_app.sbrzezinski.com.bakingapp.retrofit;
 
+import java.util.List;
+
 import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
+import baking_app.sbrzezinski.com.bakingapp.statics.WebUrls;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -9,6 +12,6 @@ import retrofit2.http.GET;
  */
 
 public interface RetrofitService {
-    @GET("/abc")
-    Call<Recipe> getRecipes();
+    @GET(WebUrls.GET_URL)
+    Call<List<Recipe>> getRecipes();
 }
