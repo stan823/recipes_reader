@@ -21,4 +21,8 @@ public class DetailsFragmentViewModel {
         selectedStepLiveData.observe(owner, observer);
     }
 
+    public Step getCurrStep(){
+        return selectedStepLiveData.getValue();
+    }
+
 }

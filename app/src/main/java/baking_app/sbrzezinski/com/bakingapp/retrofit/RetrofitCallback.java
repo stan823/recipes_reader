@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import baking_app.sbrzezinski.com.bakingapp.commmon_interfaces.ErrorCallback;
 import baking_app.sbrzezinski.com.bakingapp.commmon_interfaces.SuccessCallback;
+import baking_app.sbrzezinski.com.bakingapp.models.Recipe;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

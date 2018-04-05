@@ -43,6 +43,7 @@ public class MainActivityViewModel {
     }
 
     private void recipesFetcherSuccessCallback(List<Recipe> recipes) {
+
         recipesLiveData.postValue(recipes);
     }
 
