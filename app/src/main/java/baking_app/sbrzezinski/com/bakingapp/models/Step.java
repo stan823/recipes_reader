@@ -22,6 +22,8 @@ public class Step {
     @Expose
     private String thumbnailURL;
 
+
+
     public Integer getId() {
         return id;
     }

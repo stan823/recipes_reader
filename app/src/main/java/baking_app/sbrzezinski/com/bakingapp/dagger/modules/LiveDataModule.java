@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import baking_app.sbrzezinski.com.bakingapp.live_data.RecipesLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedRecipeLiveData;
+import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedStepLiveData;
 import dagger.Module;
 import dagger.Provides;
 
@@ -22,5 +23,11 @@ public class LiveDataModule {
     @Singleton
     SelectedRecipeLiveData provideSelectedRecipeLiveData(){
         return new SelectedRecipeLiveData();
+    }
+
+    @Provides
+    @Singleton
+    SelectedStepLiveData provideSelectedStepLiveData(){
+        return new SelectedStepLiveData();
     }
 }

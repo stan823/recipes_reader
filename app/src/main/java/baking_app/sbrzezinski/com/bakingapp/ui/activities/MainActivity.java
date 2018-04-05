@@ -1,11 +1,11 @@
 package baking_app.sbrzezinski.com.bakingapp.ui.activities;
 
 import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onRecipeSelected(Recipe recipe) {
         if (recipe!=null){
-            Toast.makeText(this,recipe.getName(),Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this,StepsListActivity.class));
         }
     }
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // injecting ViewModel and RecipesAdapter using Dagger Library
-        BakingApplication.getBakingApplication().getMainActivityComponent().inject(this);
+        BakingApplication.getBakingApplication().getAppComponent().inject(this);
 
         setUpAdapter();
 

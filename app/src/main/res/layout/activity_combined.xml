@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="baking_app.sbrzezinski.com.bakingapp.ui.activities.CombinedActivity">
+
+    <fragment
+        android:id="@+id/fragment_steps_list_holder"
+        android:name="baking_app.sbrzezinski.com.bakingapp.ui.fragments.StepsListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <fragment
+        android:id="@+id/fragment_details_holder"
+        android:name="baking_app.sbrzezinski.com.bakingapp.ui.fragments.DetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"/>
+</LinearLayout>
