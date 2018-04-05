@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -36,10 +35,8 @@ public class DetailFragment extends Fragment {
 
     @Inject
     DetailsFragmentViewModel viewModel;
-
     @Inject
     SimpleExoPlayer player;
-
     private TextView nameHolder;
     private TextView descriptionHolder;
     private ImageView imageHolder;
@@ -58,6 +55,22 @@ public class DetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         init(view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        player.setPlayWhenReady(true);
+        long currentPosition = viewModel.getCurrentPosition();
+        player.seekTo(currentPosition);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        viewModel.setCurrentPosition(player.getCurrentPosition());
+        player.setPlayWhenReady(false);
     }
 
     private void init(View view) {
@@ -81,36 +94,20 @@ public class DetailFragment extends Fragment {
                 imageHolder.setImageDrawable(null);
                 imageHolder.setVisibility(View.GONE);
             }
-
-
-
+            if (step != null && step.getVideoURL() != null && !step.getVideoURL().isEmpty()) {
+                Log.d("thumb", "obsr");
+                // Produces DataSource instances through which media data is loaded.
+                DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getActivity(),
+                        Util.getUserAgent(getActivity(), "BakingApp"), null);
+                // This is the MediaSource representing the media to be played.
+                MediaSource videoSource = new ExtractorMediaSource(Uri.parse(step.getVideoURL()), dataSourceFactory, new DefaultExtractorsFactory(), null, null);
+                // Prepare the player with the source.
+                player.prepare(videoSource);
+                player.setPlayWhenReady(true);
+                sev.setVisibility(View.VISIBLE);
+            } else {
+                sev.setVisibility(View.GONE);
+            }
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Step step=viewModel.getCurrStep();
-        if (step!=null && step.getVideoURL() != null && !step.getVideoURL().isEmpty()) {
-            Log.d("thumb","obsr");
-            // Produces DataSource instances through which media data is loaded.
-            DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getActivity(),
-                    Util.getUserAgent(getActivity(), "BakingApp"), null);
-            // This is the MediaSource representing the media to be played.
-            MediaSource videoSource = new ExtractorMediaSource(Uri.parse(step.getVideoURL()), dataSourceFactory, new DefaultExtractorsFactory(), null, null);
-            // Prepare the player with the source.
-            player.prepare(videoSource);
-            player.setPlayWhenReady(true);
-            sev.setVisibility(View.VISIBLE);
-        }else{
-            sev.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        player.stop();
-
     }
 }

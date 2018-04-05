@@ -2,6 +2,7 @@ package baking_app.sbrzezinski.com.bakingapp.dagger.modules;
 
 import javax.inject.Singleton;
 
+import baking_app.sbrzezinski.com.bakingapp.live_data.ExoPlayerCurrentPositionLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.RecipesLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedRecipeLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedStepLiveData;
@@ -55,19 +56,19 @@ public class VMModule {
 
     @Provides
     @Singleton
-    DetailActivityViewModel provideDetailsActivityViewModel(SelectedStepLiveData selectedStepLiveData){
-        return new DetailActivityViewModel(selectedStepLiveData);
+    DetailActivityViewModel provideDetailsActivityViewModel(SelectedStepLiveData selectedStepLiveData, ExoPlayerCurrentPositionLiveData exoPlayerCurrentPositionLiveData){
+        return new DetailActivityViewModel(selectedStepLiveData,exoPlayerCurrentPositionLiveData);
     }
 
     @Provides
     @Singleton
-    CombinedActivityViewModel provideCombinedActiviytViewModel(SelectedStepLiveData selectedStepLiveData,SelectedRecipeLiveData selectedRecipeLiveData){
-        return new CombinedActivityViewModel(selectedStepLiveData,selectedRecipeLiveData);
+    CombinedActivityViewModel provideCombinedActiviytViewModel(SelectedStepLiveData selectedStepLiveData,SelectedRecipeLiveData selectedRecipeLiveData,ExoPlayerCurrentPositionLiveData exoPlayerCurrentPositionLiveData){
+        return new CombinedActivityViewModel(selectedStepLiveData,selectedRecipeLiveData,exoPlayerCurrentPositionLiveData);
     }
 
     @Provides
     @Singleton
-    DetailsFragmentViewModel provideDetailsFragmentViewModel(SelectedStepLiveData selectedStepLiveData){
-        return new DetailsFragmentViewModel(selectedStepLiveData);
+    DetailsFragmentViewModel provideDetailsFragmentViewModel(SelectedStepLiveData selectedStepLiveData,ExoPlayerCurrentPositionLiveData exoPlayerCurrentPositionLiveData){
+        return new DetailsFragmentViewModel(selectedStepLiveData,exoPlayerCurrentPositionLiveData);
     }
 }

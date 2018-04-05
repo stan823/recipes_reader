@@ -2,6 +2,7 @@ package baking_app.sbrzezinski.com.bakingapp.dagger.modules;
 
 import javax.inject.Singleton;
 
+import baking_app.sbrzezinski.com.bakingapp.live_data.ExoPlayerCurrentPositionLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.RecipesLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedRecipeLiveData;
 import baking_app.sbrzezinski.com.bakingapp.live_data.SelectedStepLiveData;
@@ -29,5 +30,11 @@ public class LiveDataModule {
     @Singleton
     SelectedStepLiveData provideSelectedStepLiveData(){
         return new SelectedStepLiveData();
+    }
+
+    @Provides
+    @Singleton
+    ExoPlayerCurrentPositionLiveData provideExoPlayerLiveData(){
+        return new ExoPlayerCurrentPositionLiveData();
     }
 }
